@@ -46,3 +46,7 @@ for record in local:
 print("\n----DETALLE----")
 attrs =[o._context for o in local]
 print(attrs)
+
+
+#Get Subresource_uris - LOCAL
+custom_search = client.available_phone_numbers('MX').local.list()
