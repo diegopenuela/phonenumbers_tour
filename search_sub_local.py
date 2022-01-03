@@ -44,9 +44,22 @@ for record in local:
 
 #Atributo
 print("\n----DETALLE----")
-attrs =[o._context for o in local]
+attrs =[o.locality for o in local]
 print(attrs)
 
 
+
 #Get Subresource_uris - LOCAL
-custom_search = client.available_phone_numbers('MX').local.list()
+print("\n----CUSTOM SEARCH----")
+
+custom_search = client.available_phone_numbers('MX').local \
+                                                    .list(
+                                                        in_locality='Tijuana',
+                                                        contains='81',
+                                                        sms_enabled=False,
+                                                        voice_enabled=True,
+                                                        ) 
+
+result =[o.phone_number for o in custom_search]
+print(result)
+                                                    
