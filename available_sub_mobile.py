@@ -13,53 +13,45 @@ client = Client(account_sid, auth_token)
 # AvailablePhoneNumberMobile
 
 
-#Capabilities
-# Voice, SMS, MMS
-
-
 #ONE COUNTRY
 #Get root object: AvailablePhoneNumber to access Subresource_uris
 #available_phone_number_country = client.available_phone_numbers('MX').fetch()
 
-#Get Subresource_uris - LOCAL
-local = client.available_phone_numbers('MX').local.list()
+#Get Subresource_uris - TOLLFREE
+tollfree = client.available_phone_numbers('MX').toll_free.list()
 
 #Understand the object
-print("\n----LISTA----")
-print(type(local))
-print(dir(local))
-print(len(local))
+print("\n----LIST----")
+print(type(tollfree))
+print(dir(tollfree))
+print(len(tollfree))
 
 #
-print("\n----ATRIBUTOS----")
-for record in local:
+print("\n----PROPERTIES----")
+for record in tollfree:
     print(dir(record))
     break
 
 
-print("\n----VALORES----")
-for record in local:
+print("\n----VALUES----")
+for record in tollfree:
     print(vars(record))
     break
 
 #Atributo
-print("\n----DETALLE----")
-attrs =[o.locality for o in local]
+print("\n----DETAILS----")
+attrs =[o.phone_number for o in tollfree]
 print(attrs)
-
-
 
 #Get Subresource_uris
 print("\n----CUSTOM SEARCH----")
 
-custom_search = client.available_phone_numbers('MX').local \
+custom_search = client.available_phone_numbers('MX').toll_free \
                                                     .list(
-                                                        in_locality='Tijuana',
-                                                        contains='81',
+                                                        contains='2731',
                                                         sms_enabled=False,
                                                         voice_enabled=True
                                                         ) 
 
-result =[o.phone_number for o in custom_search]
+result =[item.phone_number for item in custom_search]
 print(result)
-                                                    
