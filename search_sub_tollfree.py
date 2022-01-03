@@ -40,5 +40,18 @@ for record in tollfree:
 
 #Atributo
 print("\n----DETALLE----")
-attrs =[o._context for o in tollfree]
+attrs =[o.phone_number for o in tollfree]
 print(attrs)
+
+#Get Subresource_uris
+print("\n----CUSTOM SEARCH----")
+
+custom_search = client.available_phone_numbers('MX').toll_free \
+                                                    .list(
+                                                        contains='2731',
+                                                        sms_enabled=False,
+                                                        voice_enabled=True
+                                                        ) 
+
+result =[item.phone_number for item in custom_search]
+print(result)

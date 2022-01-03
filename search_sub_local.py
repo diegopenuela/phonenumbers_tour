@@ -49,7 +49,7 @@ print(attrs)
 
 
 
-#Get Subresource_uris - LOCAL
+#Get Subresource_uris
 print("\n----CUSTOM SEARCH----")
 
 custom_search = client.available_phone_numbers('MX').local \
@@ -57,7 +57,7 @@ custom_search = client.available_phone_numbers('MX').local \
                                                         in_locality='Tijuana',
                                                         contains='81',
                                                         sms_enabled=False,
-                                                        voice_enabled=True,
+                                                        voice_enabled=True
                                                         ) 
 
 result =[o.phone_number for o in custom_search]
